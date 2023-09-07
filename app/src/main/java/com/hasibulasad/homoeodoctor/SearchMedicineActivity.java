@@ -1,5 +1,8 @@
 package com.hasibulasad.homoeodoctor;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,9 +11,17 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hasibulasad.homoeodoctor.Dbhelper.DatabaseHelper;
+import com.hasibulasad.homoeodoctor.Models.LokkhonModel;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchMedicineActivity extends AppCompatActivity {
+
+    private DatabaseHelper mDBHelper;
+    private SQLiteDatabase mDatabase;
+
 
     Spinner gosolspinner, ghamspinner, khabarspinner, pipasaspinner, paikhanaspinner, prosabspinner, manosikotaspinner, srabspinner,
             boisistospinner;
@@ -38,6 +49,8 @@ public class SearchMedicineActivity extends AppCompatActivity {
         boisistospinner = findViewById(R.id.idboisistospinner);
 
         findmedicinebtn = findViewById(R.id.idfindmedicinebtn);
+
+        mDBHelper = new DatabaseHelper(this);
 
 
         gosolarray = getResources().getStringArray(R.array.gosol_array);
@@ -72,4 +85,30 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
 
     }
+    public List<LokkhonModel> getListProduct() {
+        LokkhonModel lokkhonModel = null;
+        List<LokkhonModel> lokkhonModelArrayList = new ArrayList<>();
+        mDBHelper.openDatabase();
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            lokkhonModel = new LokkhonModel(
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9)
+            );
+            lokkhonModelArrayList.add(lokkhonModel);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        mDBHelper.closeDatabase();
+        return lokkhonModelArrayList;
+    }
+
 }
