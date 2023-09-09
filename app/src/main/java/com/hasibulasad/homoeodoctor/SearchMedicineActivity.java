@@ -1,28 +1,41 @@
 package com.hasibulasad.homoeodoctor;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hasibulasad.homoeodoctor.Dbhelper.DatabaseHelper;
+import com.hasibulasad.homoeodoctor.Adapter.ListProductAdapter;
+import com.hasibulasad.homoeodoctor.Adapter.LokkhonRvAdapter;
 import com.hasibulasad.homoeodoctor.Models.LokkhonModel;
+import com.hasibulasad.homoeodoctor.Models.Product;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchMedicineActivity extends AppCompatActivity {
 
     private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDatabase;
+    private ListView lvProduct;
+    private ListProductAdapter adapter;
+    private List<Product> mProductList;
+    ArrayList <LokkhonModel> lokkonlist;
 
-
+    LokkhonRvAdapter lokkhonAdapter;
     Spinner gosolspinner, ghamspinner, khabarspinner, pipasaspinner, paikhanaspinner, prosabspinner, manosikotaspinner, srabspinner,
             boisistospinner;
     String [] gosolarray, ghamarray, khabararray, pipasaarray, paikhanaarray, prosabarray, manosikotaarray, srabarray, boisistoarray;
@@ -50,7 +63,27 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
         findmedicinebtn = findViewById(R.id.idfindmedicinebtn);
 
+
         mDBHelper = new DatabaseHelper(this);
+        lvProduct = (ListView)findViewById(R.id.listview_product);
+        mDBHelper = new DatabaseHelper(this);
+
+        File database = getApplicationContext().getDatabasePath(DatabaseHelper.DBNAME);
+        if (false == database.exists()) {
+            mDBHelper.getReadableDatabase();
+            //Copy db
+            if (copyDatabase(this)) {
+                Toast.makeText(this, "Copy database succes", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Copy data error", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } //Get product list in db when db exists
+        mProductList = mDBHelper.getListProduct();
+        //Init adapter
+        adapter = new ListProductAdapter(this, mProductList);
+        //Set adapter for listview
+        lvProduct.setAdapter(adapter);
 
 
         gosolarray = getResources().getStringArray(R.array.gosol_array);
@@ -73,42 +106,89 @@ public class SearchMedicineActivity extends AppCompatActivity {
         pipasaspinner.setAdapter(pipasaadapter);
 
 
+
         findmedicinebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-
             }
         });
 
-
-
     }
-    public List<LokkhonModel> getListProduct() {
-        LokkhonModel lokkhonModel = null;
-        List<LokkhonModel> lokkhonModelArrayList = new ArrayList<>();
-        mDBHelper.openDatabase();
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine", null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            lokkhonModel = new LokkhonModel(
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getString(3),
-                    cursor.getString(4),
-                    cursor.getString(5),
-                    cursor.getString(6),
-                    cursor.getString(7),
-                    cursor.getString(8),
-                    cursor.getString(9)
-            );
-            lokkhonModelArrayList.add(lokkhonModel);
-            cursor.moveToNext();
+
+    private boolean copyDatabase(Context context) {
+        try {
+
+            InputStream inputStream = context.getAssets().open(DatabaseHelper.DBNAME);
+            String outFileName = DatabaseHelper.DBLOCATION + DatabaseHelper.DBNAME;
+            OutputStream outputStream = new FileOutputStream(outFileName);
+            byte[] buff = new byte[1024];
+            int length = 0;
+            while ((length = inputStream.read(buff)) > 0) {
+                outputStream.write(buff, 0, length);
+            }
+            outputStream.flush();
+            outputStream.close();
+            Log.w("MainActivity", "DB copied");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
-        cursor.close();
-        mDBHelper.closeDatabase();
-        return lokkhonModelArrayList;
+    }
+
+
+    public class DatabaseHelper extends SQLiteOpenHelper {
+        public static final String DBNAME = "HomoeoMedicine.db";
+        public static final String DBLOCATION = "/data/data/com.hasibulasad.homoeodoctor/databases/";
+        private Context mContext;
+        private SQLiteDatabase mDatabase;
+
+        public DatabaseHelper(Context context) {
+            super(context, DBNAME, null, 1);
+            this.mContext = context;
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
+
+        public void openDatabase() {
+            String dbPath = mContext.getDatabasePath(DBNAME).getPath();
+            if(mDatabase != null && mDatabase.isOpen()) {
+                return;
+            }
+            mDatabase = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+        }
+
+        public void closeDatabase() {
+            if(mDatabase!=null) {
+                mDatabase.close();
+            }
+        }
+
+        public List<Product> getListProduct() {
+            Product product = null;
+            List<Product> productList = new ArrayList<>();
+            openDatabase();
+            Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine", null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                product = new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+                productList.add(product);
+                cursor.moveToNext();
+            }
+            cursor.close();
+            closeDatabase();
+            return productList;
+        }
     }
 
 }

@@ -269,14 +269,14 @@
                 app:layout_constraintStart_toStartOf="@+id/idboisistotv"
                 app:layout_constraintTop_toBottomOf="@+id/idboisistospinner" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/idmedicinelistrv"
+            <ListView
+                android:id="@+id/listview_product"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idfindmedicinebtn" />
+                android:layout_height="match_parent"
+                android:divider="#d1d1d1"
+                android:dividerHeight="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idfindmedicinebtn"></ListView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
