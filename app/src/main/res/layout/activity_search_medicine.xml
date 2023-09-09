@@ -7,6 +7,7 @@
     tools:context=".SearchMedicineActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -29,12 +30,10 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <TextView
                 android:id="@+id/idgosoltv"
@@ -269,16 +268,18 @@
                 app:layout_constraintStart_toStartOf="@+id/idboisistotv"
                 app:layout_constraintTop_toBottomOf="@+id/idboisistospinner" />
 
-            <ListView
-                android:id="@+id/listview_product"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="#d1d1d1"
-                android:dividerHeight="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idfindmedicinebtn"></ListView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ListView
+            android:id="@+id/listview_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#d1d1d1"
+            android:dividerHeight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
