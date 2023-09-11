@@ -7,42 +7,50 @@
     </string-array>
 
     <string-array name="gham_array">
+        <item>সিলেক্ট করুন</item>
         <item>কম</item>
         <item>বেশী</item>
     </string-array>
 
     <string-array name="khabar_array">
+        <item>সিলেক্ট করুন</item>
         <item>ঝাল</item>
         <item>মিষ্টি</item>
         <item>টক</item>
     </string-array>
 
     <string-array name="pipasa_array">
+        <item>সিলেক্ট করুন</item>
         <item>কম</item>
         <item>বেশী</item>
     </string-array>
 
     <string-array name="paikhana_array">
+        <item>সিলেক্ট করুন</item>
         <item></item>
         <item></item>
     </string-array>
 
     <string-array name="prosab_array">
+        <item>সিলেক্ট করুন</item>
         <item></item>
         <item></item>
     </string-array>
 
     <string-array name="manosikota_array">
+        <item>সিলেক্ট করুন</item>
         <item></item>
         <item></item>
     </string-array>
 
     <string-array name="srab_array">
+        <item>সিলেক্ট করুন</item>
         <item></item>
         <item></item>
     </string-array>
 
     <string-array name="boisisto_array">
+        <item>সিলেক্ট করুন</item>
         <item></item>
         <item></item>
     </string-array>

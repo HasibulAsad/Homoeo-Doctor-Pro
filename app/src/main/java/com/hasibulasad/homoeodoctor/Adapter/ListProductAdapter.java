@@ -37,9 +37,17 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     @Override
     public void onBindViewHolder(@NonNull ListProductAdapter.ViewHolder holder, int position) {
         Product model =mProductList.get(position);
-        holder.tvName.setText(model.getName());
-        holder.tvPrice.setText(String.valueOf(model.getPrice()) + "");
-        holder.tvDescription.setText(model.getDescription());
+        holder.tvName.setText(model.getMedicineName());
+        holder.tvPrice.setText(model.getGosol()+"");
+        holder.tvDescription.setText(
+                "Gham : "+model.getGham()+"\n"
+                +"khabar : "+ model.getKhabar()+"\n"
+                +"pipasa : "+ model.getPipasa()+"\n"
+                +"paikhana : "+ model.getPaikhana()+"\n"
+                +"Prosab : "+model.getProsab()+"\n"
+                +"Manosikota : "+model.getManosikota()+"\n"
+                +"Srab : "+ model.getSrab()+"\n"
+                +"Boisisto : "+ model.getBoisisto());
     }
 
     @Override

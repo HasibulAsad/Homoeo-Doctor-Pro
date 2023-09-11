@@ -4,47 +4,108 @@ package com.hasibulasad.homoeodoctor.Models;
  * Created by NgocTri on 11/7/2015.
  */
 public class Product {
-    private int id;
-    private String name;
-    private String price;
-    private String description;
+    String medicineName;
+    String gosol;
+    String gham;
+    String khabar;
+    String pipasa;
+    String paikhana;
+    String prosab;
+    String manosikota;
+    String srab;
+    String boisisto;
 
-    public Product(int id, String name, String price, String description) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
+
+    public Product(String medicineName, String gosol, String gham, String khabar, String pipasa, String paikhana, String prosab, String manosikota, String srab, String boisisto) {
+        this.medicineName = medicineName;
+        this.gosol = gosol;
+        this.gham = gham;
+        this.khabar = khabar;
+        this.pipasa = pipasa;
+        this.paikhana = paikhana;
+        this.prosab = prosab;
+        this.manosikota = manosikota;
+        this.srab = srab;
+        this.boisisto = boisisto;
     }
 
-    public int getId() {
-        return id;
+    public String getMedicineName() {
+        return medicineName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMedicineName(String medicineName) {
+        this.medicineName = medicineName;
     }
 
-    public String getName() {
-        return name;
+    public String getGosol() {
+        return gosol;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGosol(String gosol) {
+        this.gosol = gosol;
     }
 
-    public String getPrice() {
-        return price;
+    public String getGham() {
+        return gham;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setGham(String gham) {
+        this.gham = gham;
     }
 
-    public String getDescription() {
-        return description;
+    public String getKhabar() {
+        return khabar;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setKhabar(String khabar) {
+        this.khabar = khabar;
+    }
+
+    public String getPipasa() {
+        return pipasa;
+    }
+
+    public void setPipasa(String pipasa) {
+        this.pipasa = pipasa;
+    }
+
+    public String getPaikhana() {
+        return paikhana;
+    }
+
+    public void setPaikhana(String paikhana) {
+        this.paikhana = paikhana;
+    }
+
+    public String getProsab() {
+        return prosab;
+    }
+
+    public void setProsab(String prosab) {
+        this.prosab = prosab;
+    }
+
+    public String getManosikota() {
+        return manosikota;
+    }
+
+    public void setManosikota(String manosikota) {
+        this.manosikota = manosikota;
+    }
+
+    public String getSrab() {
+        return srab;
+    }
+
+    public void setSrab(String srab) {
+        this.srab = srab;
+    }
+
+    public String getBoisisto() {
+        return boisisto;
+    }
+
+    public void setBoisisto(String boisisto) {
+        this.boisisto = boisisto;
     }
 }
