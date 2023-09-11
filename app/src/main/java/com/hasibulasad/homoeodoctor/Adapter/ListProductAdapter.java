@@ -1,10 +1,14 @@
 package com.hasibulasad.homoeodoctor.Adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.hasibulasad.homoeodoctor.Models.LokkhonModel;
 import com.hasibulasad.homoeodoctor.Models.Product;
@@ -15,7 +19,7 @@ import java.util.List;
 /**
  * Created by NgocTri on 11/7/2015.
  */
-public class ListProductAdapter extends BaseAdapter {
+public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.ViewHolder> {
     private Context mContext;
     private List<Product> mProductList;
 
@@ -24,31 +28,32 @@ public class ListProductAdapter extends BaseAdapter {
         this.mProductList = mProductList;
     }
 
+    @NonNull
     @Override
-    public int getCount() {
+    public ListProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_listview,parent,false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ListProductAdapter.ViewHolder holder, int position) {
+        Product model =mProductList.get(position);
+        holder.tvName.setText(model.getName());
+        holder.tvPrice.setText(String.valueOf(model.getPrice()) + "");
+        holder.tvDescription.setText(model.getDescription());
+    }
+
+    @Override
+    public int getItemCount() {
         return mProductList.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return mProductList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return mProductList.get(position).getId();
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        View v = View.inflate(mContext, R.layout.item_listview, null);
-        TextView tvName = (TextView)v.findViewById(R.id.tv_product_name);
-        TextView tvPrice = (TextView)v.findViewById(R.id.tv_product_price);
-        TextView tvDescription = (TextView)v.findViewById(R.id.tv_product_description);
-        tvName.setText(mProductList.get(position).getName());
-        tvPrice.setText(String.valueOf(mProductList.get(position).getPrice()) + "");
-        tvDescription.setText(mProductList.get(position).getDescription());
-        return v;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvName, tvPrice, tvDescription;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvName = itemView.findViewById(R.id.tv_product_name);
+            tvPrice = itemView.findViewById(R.id.tv_product_price);
+            tvDescription = itemView.findViewById(R.id.tv_product_description);
+        }
     }
 }

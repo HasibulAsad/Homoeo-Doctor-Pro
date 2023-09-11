@@ -33,7 +33,7 @@ public class SystemRvAdapter extends RecyclerView.Adapter<SystemRvAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull SystemRvAdapter.ViewHolder holder, int position) {
         SystemModel model = systemlist.get(position);
-        holder.numbertv.setText(model.getNumber());
+        holder.numbertv.setText(model.getNumber()+"");
         holder.nametv.setText(model.getName());
     }
 

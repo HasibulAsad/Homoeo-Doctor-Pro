@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.hasibulasad.homoeodoctor.Adapter.ListProductAdapter;
 import com.hasibulasad.homoeodoctor.Adapter.LokkhonRvAdapter;
@@ -30,7 +32,7 @@ import java.util.List;
 public class SearchMedicineActivity extends AppCompatActivity {
 
     private DatabaseHelper mDBHelper;
-    private ListView lvProduct;
+    private RecyclerView lvProduct;
     private ListProductAdapter adapter;
     private List<Product> mProductList;
     ArrayList <LokkhonModel> lokkonlist;
@@ -65,7 +67,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
 
         mDBHelper = new DatabaseHelper(this);
-        lvProduct = (ListView)findViewById(R.id.listview_product);
+        lvProduct = findViewById(R.id.listview_product);
         mDBHelper = new DatabaseHelper(this);
 
         File database = getApplicationContext().getDatabasePath(DatabaseHelper.DBNAME);
@@ -79,11 +81,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
                 return;
             }
         } //Get product list in db when db exists
-        mProductList = mDBHelper.getListProduct();
-        //Init adapter
-        adapter = new ListProductAdapter(this, mProductList);
-        //Set adapter for listview
-        lvProduct.setAdapter(adapter);
+
 
 
         gosolarray = getResources().getStringArray(R.array.gosol_array);
@@ -95,9 +93,11 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
         gosoladapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,gosolarray);
         gosolspinner.setAdapter(gosoladapter);
+        selectedgosol= gosolspinner.getSelectedItem().toString();
 
         ghamadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,ghamarray);
         ghamspinner.setAdapter(ghamadapter);
+        selectedgham = ghamspinner.getSelectedItem().toString().trim();
 
         khabaradapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, khabararray);
         khabarspinner.setAdapter(khabaradapter);
@@ -111,7 +111,13 @@ public class SearchMedicineActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                mProductList = mDBHelper.getListProduct();
+                //Init adapter
+                adapter = new ListProductAdapter(getApplicationContext(), mProductList);
+                //Set adapter for listview
+                lvProduct.setAdapter(adapter);
+                lvProduct.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                lvProduct.setHasFixedSize(true);
             }
         });
 
@@ -178,7 +184,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
             Product product = null;
             List<Product> productList = new ArrayList<>();
             openDatabase();
-            Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine", null);
+            Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine where ঘাম like '"+selectedgham+"' ", null);
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 product = new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
