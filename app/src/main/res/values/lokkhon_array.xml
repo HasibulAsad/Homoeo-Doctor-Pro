@@ -27,32 +27,38 @@
 
     <string-array name="paikhana_array">
         <item>সিলেক্ট করুন</item>
-        <item></item>
-        <item></item>
+        <item>কোষ্ঠবদ্ধতা</item>
+        <item>নরম</item>
+        <item>শক্ত</item>
+        <item>আমযুক্ত</item>
+        <item>সবুজ</item>
     </string-array>
 
     <string-array name="prosab_array">
         <item>সিলেক্ট করুন</item>
-        <item></item>
-        <item></item>
+        <item>কাটা কাটা প্রসাব</item>
+        <item>হলুদাভ</item>
+        <item>বাধা বাধা প্রসাব</item>
     </string-array>
 
     <string-array name="manosikota_array">
         <item>সিলেক্ট করুন</item>
-        <item></item>
-        <item></item>
+        <item>রাগ বেশী</item>
+        <item>শান্তনায় বিরক্ত</item>
     </string-array>
 
     <string-array name="srab_array">
         <item>সিলেক্ট করুন</item>
-        <item></item>
-        <item></item>
+        <item>দলা দলা</item>
+        <item>ব্যথা যুক্ত</item>
+        <item>আঁশটে গন্ধযুক্ত</item>
     </string-array>
 
     <string-array name="boisisto_array">
         <item>সিলেক্ট করুন</item>
-        <item></item>
-        <item></item>
+        <item>সুচের মত ব্যাথা</item>
+        <item>গরমে উপশম</item>
+        <item>রাতে বৃদ্ধি</item>
     </string-array>
 
 </resources>
