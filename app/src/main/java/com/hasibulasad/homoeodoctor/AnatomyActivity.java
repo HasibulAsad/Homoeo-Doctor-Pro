@@ -1,6 +1,7 @@
 package com.hasibulasad.homoeodoctor;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +37,12 @@ public class AnatomyActivity extends AppCompatActivity {
 
 
         anatomyRv.setLayoutManager(new LinearLayoutManager(this));
-        systemadapter = new SystemRvAdapter(this,systemNameList);
+        systemadapter = new SystemRvAdapter(this, systemNameList, new SystemRvAdapter.ClickInterface() {
+            @Override
+            public void itemClickListener(int position) {
+                Toast.makeText(AnatomyActivity.this, "Position : "+position, Toast.LENGTH_SHORT).show();
+            }
+        });
         anatomyRv.setAdapter(systemadapter);
         anatomyRv.setHasFixedSize(true);
     }

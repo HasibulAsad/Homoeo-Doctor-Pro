@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +20,13 @@ public class SystemRvAdapter extends RecyclerView.Adapter<SystemRvAdapter.ViewHo
 
     Context context;
     ArrayList<SystemModel> systemlist = new ArrayList<>();
+    int lastpos = -1;
+    ClickInterface clickInterface;
 
-    public SystemRvAdapter(Context context, ArrayList<SystemModel> systemlist) {
+    public SystemRvAdapter(Context context, ArrayList<SystemModel> systemlist,ClickInterface clickInterface) {
         this.context = context;
         this.systemlist = systemlist;
+        this.clickInterface = clickInterface;
     }
 
     @NonNull
@@ -35,11 +40,29 @@ public class SystemRvAdapter extends RecyclerView.Adapter<SystemRvAdapter.ViewHo
         SystemModel model = systemlist.get(position);
         holder.numbertv.setText(model.getNumber()+"");
         holder.nametv.setText(model.getName());
+//        setAnimation(holder.itemView,position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickInterface.itemClickListener(position);
+            }
+        });
+    }
+    private void setAnimation(View itemView, int position) {
+        if (position > lastpos) {
+            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+            itemView.setAnimation(animation);
+            lastpos = position;
+        }
     }
 
     @Override
     public int getItemCount() {
         return systemlist.size();
+    }
+
+    public interface ClickInterface {
+        void itemClickListener(int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

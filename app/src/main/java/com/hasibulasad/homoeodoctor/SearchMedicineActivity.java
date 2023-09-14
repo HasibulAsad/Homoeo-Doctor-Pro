@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +40,8 @@ public class SearchMedicineActivity extends AppCompatActivity {
     private RecyclerView lvProduct;
     private ListProductAdapter adapter;
     private List<Product> mProductList;
+    TextView searchmedicinetv;
+    ConstraintLayout lokkhonlayout;
     ArrayList<LokkhonModel> lokkonlist;
 
     LokkhonRvAdapter lokkhonAdapter;
@@ -65,6 +70,8 @@ public class SearchMedicineActivity extends AppCompatActivity {
         manosikotaspinner = findViewById(R.id.idmanosikotaspinner);
         srabspinner = findViewById(R.id.idsrabspinner);
         boisistospinner = findViewById(R.id.idboisistospinner);
+        lokkhonlayout = findViewById(R.id.constraintLayout);
+        searchmedicinetv = findViewById(R.id.searchmedicinetv);
 
         gosoltv = findViewById(R.id.idgosoltv);
         ghamtv = findViewById(R.id.idghamtv);
@@ -75,6 +82,17 @@ public class SearchMedicineActivity extends AppCompatActivity {
         mDBHelper = new DatabaseHelper(this);
         lvProduct = findViewById(R.id.listview_product);
         mDBHelper = new DatabaseHelper(this);
+
+        searchmedicinetv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_down);
+                lokkhonlayout.startAnimation(aniSlide);
+
+                lokkhonlayout.setVisibility(View.VISIBLE);
+            }
+        });
 
         File database = getApplicationContext().getDatabasePath(DatabaseHelper.DBNAME);
         if (false == database.exists()) {
@@ -94,7 +112,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
         khabararray = getResources().getStringArray(R.array.khabar_array);
         pipasaarray = getResources().getStringArray(R.array.pipasa_array);
         paikhanaarray = getResources().getStringArray(R.array.paikhana_array);
-        prosabarray = getResources().getStringArray(R.array.paikhana_array);
+        prosabarray = getResources().getStringArray(R.array.prosab_array);
         manosikotaarray = getResources().getStringArray(R.array.manosikota_array);
         srabarray = getResources().getStringArray(R.array.srab_array);
         boisistoarray = getResources().getStringArray(R.array.boisisto_array);
@@ -158,7 +176,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedpipasa = adapterView.getSelectedItem().toString().trim();
                 if (selectedpipasa.equals("সিলেক্ট করুন")) {
-                    selectedpipasa ="";
+                    selectedpipasa = "";
                 }
             }
 
@@ -185,7 +203,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
             }
         });
-        paikhanaadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,paikhanaarray);
+        paikhanaadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, paikhanaarray);
         paikhanaspinner.setAdapter(paikhanaadapter);
 
         prosabspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -202,14 +220,14 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
             }
         });
-        prosabadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,prosabarray);
+        prosabadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, prosabarray);
         prosabspinner.setAdapter(prosabadapter);
 
 
         manosikotaspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedmanosikota= adapterView.getSelectedItem().toString().trim();
+                selectedmanosikota = adapterView.getSelectedItem().toString().trim();
                 if (selectedmanosikota.equals("সিলেক্ট করুন")) {
                     selectedmanosikota = "";
                 }
@@ -220,7 +238,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
             }
         });
-        manosikotaadapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,manosikotaarray);
+        manosikotaadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, manosikotaarray);
         manosikotaspinner.setAdapter(manosikotaadapter);
 
         srabspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -228,7 +246,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedsrab = adapterView.getSelectedItem().toString().trim();
                 if (selectedsrab.equals("সিলেক্ট করুন")) {
-                    selectedsrab= "";
+                    selectedsrab = "";
                 }
             }
 
@@ -237,7 +255,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
             }
         });
-        srabadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,srabarray);
+        srabadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, srabarray);
         srabspinner.setAdapter(srabadapter);
 
 
@@ -255,15 +273,15 @@ public class SearchMedicineActivity extends AppCompatActivity {
 
             }
         });
-        boisistoadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,boisistoarray);
+        boisistoadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, boisistoarray);
         boisistospinner.setAdapter(boisistoadapter);
-
 
 
         findmedicinebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                lokkhonlayout.setVisibility(View.GONE);
                 mProductList = mDBHelper.getListProduct();
                 adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                 //Set adapter for listview
@@ -339,15 +357,15 @@ public class SearchMedicineActivity extends AppCompatActivity {
             List<Product> productList = new ArrayList<>();
             openDatabase();
 
-            Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine where গোসল like'%"+selectedgosol+"%' " +
-                    "and ঘাম like '%"+selectedgham+"%' " +
-                    "and খাবার like '%"+selectedkhabar+"%' " +
-                    "and পিপাসা like '%"+selectedpipasa+"%' " +
-                    "and পায়খানা like '%"+selectedpaikhana+"%'" +
-                    "and প্রসাব like '%"+selectedprosab+"%'" +
-                    "and মানসিকতা like '%"+selectedmanosikota+"%'" +
-                    "and স্রাব like '%"+selectedsrab+"%'" +
-                    "and বৈশিষ্ট্য like '%"+selectedboisisto+"%'", null);
+            Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine where গোসল like'%" + selectedgosol + "%' " +
+                    "and ঘাম like '%" + selectedgham + "%' " +
+                    "and খাবার like '%" + selectedkhabar + "%' " +
+                    "and পিপাসা like '%" + selectedpipasa + "%' " +
+                    "and পায়খানা like '%" + selectedpaikhana + "%'" +
+                    "and প্রসাব like '%" + selectedprosab + "%'" +
+                    "and মানসিকতা like '%" + selectedmanosikota + "%'" +
+                    "and স্রাব like '%" + selectedsrab + "%'" +
+                    "and বৈশিষ্ট্য like '%" + selectedboisisto + "%'", null);
 
 //            "SELECT * FROM "+ DB_NAME + " WHERE "
 //                    + DB_NAME.id + " = " + DB_NAME.Id + " AND " + DB_NAME.Title +
