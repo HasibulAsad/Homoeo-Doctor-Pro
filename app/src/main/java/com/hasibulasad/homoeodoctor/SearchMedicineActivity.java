@@ -338,16 +338,21 @@ public class SearchMedicineActivity extends AppCompatActivity {
             Product product = null;
             List<Product> productList = new ArrayList<>();
             openDatabase();
-            Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine where" +
-                    " গোসল like '"+selectedgosol+"' " +
-                    "and ঘাম like '"+selectedgham+"'" +
-                    "and খাবার like '"+selectedkhabar+"'" +
-                    "and পিপাসা like '"+selectedpipasa+"'" +
-                    "and পায়খানা like '"+selectedpaikhana+"'" +
-                    "and প্রসাব like '"+selectedprosab+"'" +
-                    "and মানসিকতা like '"+selectedmanosikota+"'" +
-                    "and স্রাব like '"+selectedsrab+"'" +
-                    "and বৈশিষ্ট্য like '"+selectedboisisto+"' ", null);
+
+            Cursor cursor = mDatabase.rawQuery("SELECT * FROM homoeoMedicine where গোসল like'%"+selectedgosol+"%' " +
+                    "and ঘাম like '%"+selectedgham+"%' " +
+                    "and খাবার like '%"+selectedkhabar+"%' " +
+                    "and পিপাসা like '%"+selectedpipasa+"%' " +
+                    "and পায়খানা like '%"+selectedpaikhana+"%'" +
+                    "and প্রসাব like '%"+selectedprosab+"%'" +
+                    "and মানসিকতা like '%"+selectedmanosikota+"%'" +
+                    "and স্রাব like '%"+selectedsrab+"%'" +
+                    "and বৈশিষ্ট্য like '%"+selectedboisisto+"%'", null);
+
+//            "SELECT * FROM "+ DB_NAME + " WHERE "
+//                    + DB_NAME.id + " = " + DB_NAME.Id + " AND " + DB_NAME.Title +
+//                    " LIKE  '"+search.getText()+"%'"
+
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 product = new Product(
