@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hasibulasad.homoeodoctor.Adapter.SystemRvAdapter;
+import com.hasibulasad.homoeodoctor.Adapter.RvAdapter;
 import com.hasibulasad.homoeodoctor.Models.SystemModel;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AnatomyActivity extends AppCompatActivity {
     RecyclerView anatomyRv;
     ArrayList<SystemModel> systemNameList = new ArrayList<>();
-    SystemRvAdapter systemadapter;
+    RvAdapter systemadapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,21 +23,21 @@ public class AnatomyActivity extends AppCompatActivity {
 
         anatomyRv = findViewById(R.id.idanatomyRv);
 
-        systemNameList.add(new SystemModel(1,"Skeletal System"));
-        systemNameList.add(new SystemModel(2,"Muscular System"));
-        systemNameList.add(new SystemModel(3,"Nervous System"));
-        systemNameList.add(new SystemModel(4,"Respiratory System"));
-        systemNameList.add(new SystemModel(5,"Cardiovuscular System"));
-        systemNameList.add(new SystemModel(6,"Digestive System"));
-        systemNameList.add(new SystemModel(7,"Urinary System"));
-        systemNameList.add(new SystemModel(8,"Reproductive System"));
-        systemNameList.add(new SystemModel(9,"Endocrine System"));
-        systemNameList.add(new SystemModel(10,"Integumentary System"));
-        systemNameList.add(new SystemModel(11,"Lymphetic System"));
+        systemNameList.add(new SystemModel(1,"Skeletal System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(2,"Muscular System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(3,"Nervous System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(4,"Respiratory System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(5,"Cardiovuscular System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(6,"Digestive System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(7,"Urinary System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(8,"Reproductive System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(9,"Endocrine System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(10,"Integumentary System","by Hasibul Asad"));
+        systemNameList.add(new SystemModel(11,"Lymphetic System","by Hasibul Asad"));
 
 
         anatomyRv.setLayoutManager(new LinearLayoutManager(this));
-        systemadapter = new SystemRvAdapter(this, systemNameList, new SystemRvAdapter.ClickInterface() {
+        systemadapter = new RvAdapter(this, systemNameList, new RvAdapter.ClickInterface() {
             @Override
             public void itemClickListener(int position) {
                 Toast.makeText(AnatomyActivity.this, "Position : "+position, Toast.LENGTH_SHORT).show();

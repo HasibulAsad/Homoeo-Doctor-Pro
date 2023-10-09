@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hasibulasad.homoeodoctor.Adapter.SystemRvAdapter;
+import com.hasibulasad.homoeodoctor.Adapter.RvAdapter;
 import com.hasibulasad.homoeodoctor.Models.SystemModel;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class PhysiologyActivity extends AppCompatActivity {
 
     RecyclerView physiologyRv;
     ArrayList physiologyitemlist = new ArrayList();
-    SystemRvAdapter physiologyadapter;
+    RvAdapter physiologyadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +25,19 @@ public class PhysiologyActivity extends AppCompatActivity {
 
         physiologyRv = findViewById(R.id.physiologyRv);
 
-        physiologyitemlist.add(new SystemModel(1,"Skeletal System"));
-        physiologyitemlist.add(new SystemModel(2,"Muscular System"));
-        physiologyitemlist.add(new SystemModel(3,"Nervous System"));
-        physiologyitemlist.add(new SystemModel(4,"Respiratory System"));
-        physiologyitemlist.add(new SystemModel(5,"Cardiovuscular System"));
-        physiologyitemlist.add(new SystemModel(6,"Digestive System"));
-        physiologyitemlist.add(new SystemModel(7,"Urinary System"));
-        physiologyitemlist.add(new SystemModel(8,"Reproductive System"));
-        physiologyitemlist.add(new SystemModel(9,"Endocrine System"));
-        physiologyitemlist.add(new SystemModel(10,"Integumentary System"));
-        physiologyitemlist.add(new SystemModel(11,"Lymphetic System"));
+        physiologyitemlist.add(new SystemModel(1,"Skeletal System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(2,"Muscular System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(3,"Nervous System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(4,"Respiratory System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(5,"Cardiovuscular System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(6,"Digestive System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(7,"Urinary System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(8,"Reproductive System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(9,"Endocrine System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(10,"Integumentary System","by Hasibul Asad"));
+        physiologyitemlist.add(new SystemModel(11,"Lymphetic System","by Hasibul Asad"));
 
-        physiologyadapter = new SystemRvAdapter(this, physiologyitemlist, new SystemRvAdapter.ClickInterface() {
+        physiologyadapter = new RvAdapter(this, physiologyitemlist, new RvAdapter.ClickInterface() {
             @Override
             public void itemClickListener(int position) {
                 Toast.makeText(PhysiologyActivity.this, "Position : "+position, Toast.LENGTH_SHORT).show();

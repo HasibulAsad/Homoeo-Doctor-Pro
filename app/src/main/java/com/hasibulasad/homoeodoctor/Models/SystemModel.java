@@ -3,11 +3,14 @@ package com.hasibulasad.homoeodoctor.Models;
 public class SystemModel {
     int number;
     String name;
+    String description;
 
-    public SystemModel(int number, String name) {
+    public SystemModel(int number, String name, String description) {
         this.number = number;
         this.name = name;
+        this.description = description;
     }
+
 
     public int getNumber() {
         return number;
@@ -23,5 +26,13 @@ public class SystemModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

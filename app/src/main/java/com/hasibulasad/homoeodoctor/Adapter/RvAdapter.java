@@ -16,14 +16,14 @@ import com.hasibulasad.homoeodoctor.R;
 
 import java.util.ArrayList;
 
-public class SystemRvAdapter extends RecyclerView.Adapter<SystemRvAdapter.ViewHolder> {
+public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     Context context;
     ArrayList<SystemModel> systemlist = new ArrayList<>();
     int lastpos = -1;
     ClickInterface clickInterface;
 
-    public SystemRvAdapter(Context context, ArrayList<SystemModel> systemlist,ClickInterface clickInterface) {
+    public RvAdapter(Context context, ArrayList<SystemModel> systemlist, ClickInterface clickInterface) {
         this.context = context;
         this.systemlist = systemlist;
         this.clickInterface = clickInterface;
@@ -31,15 +31,16 @@ public class SystemRvAdapter extends RecyclerView.Adapter<SystemRvAdapter.ViewHo
 
     @NonNull
     @Override
-    public SystemRvAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.system_list_item, parent, false));
+    public RvAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SystemRvAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RvAdapter.ViewHolder holder, int position) {
         SystemModel model = systemlist.get(position);
         holder.numbertv.setText(model.getNumber()+"");
         holder.nametv.setText(model.getName());
+        holder.descriptiontv.setText(model.getDescription());
 //        setAnimation(holder.itemView,position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,12 +67,14 @@ public class SystemRvAdapter extends RecyclerView.Adapter<SystemRvAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView numbertv, nametv;
+        TextView numbertv, nametv,descriptiontv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             numbertv = itemView.findViewById(R.id.idnumbertv);
             nametv = itemView.findViewById(R.id.idnametv);
+            descriptiontv = itemView.findViewById(R.id.iddescription);
+
         }
     }
 }
