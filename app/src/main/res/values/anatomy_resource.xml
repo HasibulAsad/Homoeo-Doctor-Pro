@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="Skeletal_anatomy_text">
+
+    </string>
+    <string name="Muscular_anatomy_text">
+
+    </string>
+    <string name="Nervous_anatomy_text">
+
+    </string>
+    <string name="Respiratory_anatomy_text">
+  "Nasal Cavity\nOral Cavity\nPharynx\nEpiglottis\nLarynx\nTrachea\nPleura\nBronchus\nBronchioles\nAlveoli\nLungs\nDiaphragm\n"
+    </string>
+    <string name="Digestive_anatomy_text">
+"\n1. Salivary Gland\na. Parotid\nb. Submandibular\nc. Sublingual\n2. Mouth\na. Palate\nb. Uvula\nc. Teeth\nd. Tongue\n3. Throat\na. Pharynx\nb. Vocal Chords\nc. Esophagus\n4. Main Part\na. Liver\nb. Gallbladder\nc. Common bile duct\nd. Pancreatic duct\ne. Stomach\nf. Pancreas\n5. Small Intestine\na. Duodenum\nb. Jejunum\nc. Ileum\n6. Large Intestine\na. Cecum\nb. Ascending colon\nc. Transverse colon\nd. Descending colon\ne. Sigmoid colon\nf. Rectum\ng. Appendix\nh. Anus\n"
+    </string>
+    <string name="Cardiovascular_anatomy_text">
+
+    </string>
+    <string name="Urinary_anatomy_text">
+"1. Abdominal aorta\n2. Inferior vena cava\n3. Renal artery\n4. Renal vein\n5. Kidney\n6. Ureter\n7. Urinary bladder\n9. Urethra\n\n"
+    </string>
+    <string name="Reproductive_anatomy_text">
+"1. Male Reproductive System\na. Penis Head\nb. Urethra\nc. Bulbourethral Gland\nd. Prostate\ne. Seminal Vesicle\nf. Vas Deferens\ng. Epididymis\nh. Testicle\n2. Female Reproductive System\na. External Organs\ni. Mons pubis\nii. Labia Majora\niii. Labia Minora\niv. Clitoris\nv. Opening Urethra\nvi. Opening Vagina\nvii. Anus\n2. Internal Organs\ni. Vaginal Canal\nii. Endometrium\niii. Cervix\niv. Ovarian Ligament\nv. Ovary\nvi. Fallopian Tube\nvii. Uterus\n"
+    </string>
+    <string name="Endocrine_anatomy_text">
+"Pineal Gland\nHypothalamus\n1. Pituitary Gland\n2. Parathyroid Glands\n3. Thyroid Gland\n4. Thymus\n5. Adrenal Glands\n6. Pancreas\n7. Kidneys\n8. Testes\n9. Ovaries\n\n\n"
+    </string>
+    <string name="Exocrine_anatomy_text">
+
+    </string>
+    <string name="Lymphatic_anatomy_text">
+
+    </string>
+
+</resources>

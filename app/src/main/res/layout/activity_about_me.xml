@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="#293859" />
+        android:background="@color/grey" />
 
     <!--Top Header Layout-->
     <LinearLayout
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profile"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -102,7 +102,7 @@
                         android:layout_width="150dp"
                         android:layout_height="90dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/person1" />
+                        android:src="@drawable/mypic2" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/proximanovaregular"
-                        android:text="Sanskar Tiwari"
+                        android:text="Hasibul Asad"
                         android:textColor="#424242"
                         android:textSize="21sp"
                         android:textStyle="bold" />
@@ -393,7 +393,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:fontFamily="@font/proximanovaregular"
-                                android:text="+91 7999193854"
+                                android:text="01799 81 35 08"
                                 android:textColor="@color/goodgrey"
                                 android:textSize="15sp" />
                         </LinearLayout>
@@ -417,7 +417,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:fontFamily="@font/proximanovaregular"
-                                android:text="sanskar@theindianappguy.com"
+                                android:text="hasibulasad60@gmail.com"
                                 android:textColor="@color/goodgrey"
                                 android:textSize="15sp" />
                         </LinearLayout>
@@ -441,7 +441,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:fontFamily="@font/proximanovaregular"
-                                android:text="Leeds, United Kingdom"
+                                android:text="Kadirgong, Rajshahi,BD"
                                 android:textColor="@color/goodgrey"
                                 android:textSize="15sp" />
                         </LinearLayout>
@@ -528,7 +528,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="sanskar@theindianappguy.com"
+                                android:text="hasibulasad60@gmail.com"
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -550,7 +550,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="Leeds, United Kingdom"
+                                android:text="Kadirgong, Rajshahi, BD"
                                 android:textSize="15sp" />
                         </LinearLayout>
 
