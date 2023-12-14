@@ -7,11 +7,13 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class FindDoctorActivity extends AppCompatActivity {
 MaterialToolbar topAppBarDoctor;
+RecyclerView findDoctorRV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +21,7 @@ MaterialToolbar topAppBarDoctor;
 
         Window window = FindDoctorActivity.this.getWindow();
         topAppBarDoctor = findViewById(R.id.topAppBarDoctor);
+        findDoctorRV = findViewById(R.id.findDoctorRv);
         topAppBarDoctor.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,5 +37,10 @@ MaterialToolbar topAppBarDoctor;
 
 // finally change the color
 //        window.setStatusBarColor(ContextCompat.getColor(FindDoctorActivity.this,R.color.goodgrey));
+
+
+
+
+
     }
 }
