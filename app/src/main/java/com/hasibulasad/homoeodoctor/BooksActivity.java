@@ -2,6 +2,7 @@ package com.hasibulasad.homoeodoctor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -10,6 +11,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.hasibulasad.homoeodoctor.Adapter.RvAdapter;
 import com.hasibulasad.homoeodoctor.Models.SystemModel;
 
@@ -20,6 +23,7 @@ public class BooksActivity extends AppCompatActivity {
     RecyclerView homoeonotesRv;
     ArrayList<SystemModel> noteslist = new ArrayList<>();
     RvAdapter notesAdapter;
+    MaterialToolbar topappbarnotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,17 @@ public class BooksActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(BooksActivity.this,R.color.grey));
+//        window.setStatusBarColor(ContextCompat.getColor(BooksActivity.this,R.color.goodgrey));
 
         homoeonotesRv = findViewById(R.id.homoeo_notes_rv);
+        topappbarnotes = findViewById(R.id.topAppBarnotes);
+
+       topappbarnotes.setNavigationOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               onBackPressed();
+           }
+       });
 
         String[] notesTitle = getResources().getStringArray(R.array.homoeo_notes_title);
         String[] notesDescription = getResources().getStringArray(R.array.homoeo_notes_description);

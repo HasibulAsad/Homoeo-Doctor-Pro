@@ -73,7 +73,7 @@ public class SearchMedicineActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(SearchMedicineActivity.this,R.color.grey));
+//        window.setStatusBarColor(ContextCompat.getColor(SearchMedicineActivity.this,R.color.goodgrey));
 
         gosolspinner = findViewById(R.id.idgosolspinner);
         ghamspinner = findViewById(R.id.idghamspinner);

@@ -1,18 +1,30 @@
 package com.hasibulasad.homoeodoctor;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class MeteriaActivity extends AppCompatActivity {
+import com.google.android.material.appbar.MaterialToolbar;
 
+public class MeteriaActivity extends AppCompatActivity {
+MaterialToolbar topappbarmateria;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meteria);
+
+        topappbarmateria = findViewById(R.id.topAppBarmateria);
+
+        topappbarmateria.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         Window window = MeteriaActivity.this.getWindow();
 
@@ -23,6 +35,6 @@ public class MeteriaActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(MeteriaActivity.this,R.color.grey));
+//        window.setStatusBarColor(ContextCompat.getColor(MeteriaActivity.this,R.color.goodgrey));
     }
 }

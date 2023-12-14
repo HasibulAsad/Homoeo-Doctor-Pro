@@ -1,20 +1,30 @@
 package com.hasibulasad.homoeodoctor;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class FindDoctorActivity extends AppCompatActivity {
+import com.google.android.material.appbar.MaterialToolbar;
 
+public class FindDoctorActivity extends AppCompatActivity {
+MaterialToolbar topAppBarDoctor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_doctor);
 
         Window window = FindDoctorActivity.this.getWindow();
+        topAppBarDoctor = findViewById(R.id.topAppBarDoctor);
+        topAppBarDoctor.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -23,6 +33,6 @@ public class FindDoctorActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(FindDoctorActivity.this,R.color.grey));
+//        window.setStatusBarColor(ContextCompat.getColor(FindDoctorActivity.this,R.color.goodgrey));
     }
 }

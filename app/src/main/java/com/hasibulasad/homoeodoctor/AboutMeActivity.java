@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ public class AboutMeActivity extends AppCompatActivity {
 
     LinearLayout personalinfo, experience, review;
     TextView personalinfobtn, experiencebtn, reviewbtn;
+    ImageView backbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +29,10 @@ public class AboutMeActivity extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(AboutMeActivity.this,R.color.grey));
+        window.setStatusBarColor(ContextCompat.getColor(AboutMeActivity.this,R.color.goodgrey));
 
         personalinfo = findViewById(R.id.personalinfo);
         experience = findViewById(R.id.experience);
@@ -38,10 +40,19 @@ public class AboutMeActivity extends AppCompatActivity {
         personalinfobtn = findViewById(R.id.personalinfobtn);
         experiencebtn = findViewById(R.id.experiencebtn);
         reviewbtn = findViewById(R.id.reviewbtn);
+        backbtn = findViewById(R.id.back_icon);
         /*making personal info visible*/
         personalinfo.setVisibility(View.VISIBLE);
         experience.setVisibility(View.GONE);
         review.setVisibility(View.GONE);
+
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         personalinfobtn.setOnClickListener(new View.OnClickListener() {
             @Override

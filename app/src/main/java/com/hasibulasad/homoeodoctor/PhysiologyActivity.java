@@ -1,6 +1,7 @@
 package com.hasibulasad.homoeodoctor;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.hasibulasad.homoeodoctor.Adapter.RvAdapter;
 import com.hasibulasad.homoeodoctor.Models.SystemModel;
 
@@ -20,6 +22,7 @@ public class PhysiologyActivity extends AppCompatActivity {
     RecyclerView physiologyRv;
     ArrayList physiologyitemlist = new ArrayList();
     RvAdapter physiologyadapter;
+    MaterialToolbar topappbarphysio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,18 @@ public class PhysiologyActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(PhysiologyActivity.this,R.color.grey));
+//        window.setStatusBarColor(ContextCompat.getColor(PhysiologyActivity.this,R.color.goodgrey));
 
         physiologyRv = findViewById(R.id.physiologyRv);
+        topappbarphysio = findViewById(R.id.topAppBarphysio);
+
+        topappbarphysio.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
         physiologyitemlist.add(new SystemModel(1,"Skeletal System","by Hasibul Asad"));
         physiologyitemlist.add(new SystemModel(2,"Muscular System","by Hasibul Asad"));

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.grey));
+//        window.setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.goodgrey));
 
 
 
