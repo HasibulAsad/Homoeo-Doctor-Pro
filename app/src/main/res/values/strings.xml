@@ -9,6 +9,9 @@
     <string name="skills">Skills</string>
     <string name="ratings">Star Ratings</string>
     <string name="samplereview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium bibendum sapien, ut euismod massa. Duis convallis sem sed turpis elementum auctor.</string>
+    <string name="Degree">L.H.M.P(Khulna), D.H.M.S(Dhaka)</string>
+    <string name="location">Kadirgong, Rajshahi</string>
+    <string name="phone">+8801799 813 508</string>
     <string name="edit">Edit</string>
     <string name="content_description_search">Edit icon</string>
     <string name="favorite">favorite</string>

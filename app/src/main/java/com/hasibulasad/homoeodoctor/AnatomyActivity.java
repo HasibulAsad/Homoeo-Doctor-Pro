@@ -1,6 +1,7 @@
 package com.hasibulasad.homoeodoctor;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -59,24 +60,27 @@ public class AnatomyActivity extends AppCompatActivity {
         appBarLayout.setStatusBarForegroundColor(
                 MaterialColors.getColor(appBarLayout, R.attr.colorSurface));
 
-        systemNameList.add(new SystemModel(1, "Skeletal System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(2, "Muscular System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(3, "Nervous System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(4, "Respiratory System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(5, "Cardiovuscular System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(6, "Digestive System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(7, "Urinary System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(8, "Reproductive System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(9, "Endocrine System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(10, "Integumentary System", "by Hasibul Asad"));
-        systemNameList.add(new SystemModel(11, "Lymphetic System", "by Hasibul Asad"));
+        systemNameList.add(new SystemModel(1, "What is Anatomy", getResources().getString(R.string.what_is_anatomy)));
+        systemNameList.add(new SystemModel(1, "Skeletal System", getResources().getString(R.string.Skeletal_anatomy_text)));
+        systemNameList.add(new SystemModel(2, "Muscular System", getResources().getString(R.string.Muscular_anatomy_text)));
+        systemNameList.add(new SystemModel(3, "Nervous System", getResources().getString(R.string.Nervous_anatomy_text)));
+        systemNameList.add(new SystemModel(4, "Respiratory System", getResources().getString(R.string.Respiratory_anatomy_text)));
+        systemNameList.add(new SystemModel(5, "Cardiovuscular System", getResources().getString(R.string.Cardiovascular_anatomy_text)));
+        systemNameList.add(new SystemModel(6, "Digestive System", getResources().getString(R.string.Digestive_anatomy_text)));
+        systemNameList.add(new SystemModel(7, "Urinary System", getResources().getString(R.string.Urinary_anatomy_text)));
+        systemNameList.add(new SystemModel(8, "Reproductive System", getResources().getString(R.string.Reproductive_anatomy_text)));
+        systemNameList.add(new SystemModel(9, "Endocrine System", getResources().getString(R.string.Endocrine_anatomy_text)));
+        systemNameList.add(new SystemModel(10, "Integumentary System", getResources().getString(R.string.Exocrine_anatomy_text)));
+        systemNameList.add(new SystemModel(11, "Lymphetic System", getResources().getString(R.string.Lymphatic_anatomy_text)));
 
 
         anatomyRv.setLayoutManager(new LinearLayoutManager(this));
         systemadapter = new RvAdapter(this, systemNameList, new RvAdapter.ClickInterface() {
             @Override
             public void itemClickListener(int position) {
-                Toast.makeText(AnatomyActivity.this, "Position : " + position, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AnatomyActivity.this, DetailsActivity.class)
+                        .putExtra("title", systemNameList.get(position).getName())
+                        .putExtra("description", systemNameList.get(position).getDescription()));
             }
         });
         anatomyRv.setAdapter(systemadapter);
